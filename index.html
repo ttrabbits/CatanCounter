@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Catan Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/catan.css" rel="stylesheet">
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/highcharts.js"></script>
+  <script src="js/catan.js"></script>
+</head>
+<body>
+
+  <div id="turn_area" class="container">
+    Turn <span class="turn1">1</span> - <span class="turn2">1</span>
+  </div>
+
+  <div id="graph" class="container">
+  </div>
+  
+  <div id="dice_area" class="container">
+    <ul class="buttonlist plus">
+      <li><input class="dice_button" type="button" value="2" /></li>
+      <li><input class="dice_button" type="button" value="3" /></li>
+      <li><input class="dice_button" type="button" value="4" /></li>
+      <li><input class="dice_button" type="button" value="5" /></li>
+      <li><input class="dice_button" type="button" value="6" /></li>
+      <li><input class="dice_button" type="button" value="7" /></li>
+      <li><input class="dice_button" type="button" value="8" /></li>
+      <li><input class="dice_button" type="button" value="9" /></li>
+      <li><input class="dice_button" type="button" value="10" /></li>
+      <li><input class="dice_button" type="button" value="11" /></li>
+      <li><input class="dice_button" type="button" value="12" /></li>
+    </ul>
+    <ul class="buttonlist minus">
+      <li><input class="dice_button" type="button" value="2" /></li>
+      <li><input class="dice_button" type="button" value="3" /></li>
+      <li><input class="dice_button" type="button" value="4" /></li>
+      <li><input class="dice_button" type="button" value="5" /></li>
+      <li><input class="dice_button" type="button" value="6" /></li>
+      <li><input class="dice_button" type="button" value="7" /></li>
+      <li><input class="dice_button" type="button" value="8" /></li>
+      <li><input class="dice_button" type="button" value="9" /></li>
+      <li><input class="dice_button" type="button" value="10" /></li>
+      <li><input class="dice_button" type="button" value="11" /></li>
+      <li><input class="dice_button" type="button" value="12" /></li>
+    </ul>
+  </div>
+  
+  <div id="table_area" class="container">
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr><th>Spot</th><th class="dice">Value</th><th class="rate">Rate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2</td><td class="dice dice_2">0</td><td class="rate rate_2">0.0%</td></tr>
+        <tr><td>3</td><td class="dice dice_3">0</td><td class="rate rate_3">0.0%</td></tr>
+        <tr><td>4</td><td class="dice dice_4">0</td><td class="rate rate_4">0.0%</td></tr>
+        <tr><td>5</td><td class="dice dice_5">0</td><td class="rate rate_5">0.0%</td></tr>
+        <tr><td>6</td><td class="dice dice_6">0</td><td class="rate rate_6">0.0%</td></tr>
+        <tr><td>7</td><td class="dice dice_7">0</td><td class="rate rate_7">0.0%</td></tr>
+        <tr><td>8</td><td class="dice dice_8">0</td><td class="rate rate_8">0.0%</td></tr>
+        <tr><td>9</td><td class="dice dice_9">0</td><td class="rate rate_9">0.0%</td></tr>
+        <tr><td>10</td><td class="dice dice_10">0</td><td class="rate rate_10">0.0%</td></tr>
+        <tr><td>11</td><td class="dice dice_11">0</td><td class="rate rate_11">0.0%</td></tr>
+        <tr><td>12</td><td class="dice dice_12">0</td><td class="rate rate_12">0.0%</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><th>Total</th><th class="dice total">0</th><th class="rate">100.0%</th></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div id="footer" class="container">
+    <ul class="buttonlist">
+      <li><input class="btn btn-info mode_button mode_3" type="button" value="3 Players" /></li>
+      <li><input class="btn btn-info mode_button mode_4" type="button" value="4 Players" /></li>
+      <li><input class="btn btn-danger clear_button" type="button" value="Clear" /></li>
+    </ul>
+  </div>
+  
+</body>
+</html>
