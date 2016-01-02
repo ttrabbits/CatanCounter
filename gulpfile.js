@@ -16,7 +16,7 @@ gulp.task('compile-ts', function() {
             removeComments: true,
         }))
         .js
-        .pipe(gulp.dest(paths.js))
+        .pipe(gulp.dest(paths.js));
 });
 
 gulp.task('compile-scss', function() {
@@ -27,7 +27,7 @@ gulp.task('compile-scss', function() {
         .on('error', function(err) {
             console.log(err.message);
         })
-        .pipe(gulp.dest(paths.css))
+        .pipe(gulp.dest(paths.css));
 });
 
 gulp.task('watch', function() {

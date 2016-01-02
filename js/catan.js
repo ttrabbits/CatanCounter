@@ -6,7 +6,6 @@ var CatanCounterChart;
     var totalTurn;
     var maxValue;
     function init() {
-        playerCount = 4;
         initValues();
         bindEvents();
         $('#graph').highcharts({
@@ -21,7 +20,7 @@ var CatanCounterChart;
             },
             yAxis: {
                 min: 0,
-                max: 10,
+                max: maxValue,
                 allowDecimals: false,
                 title: '',
             },
@@ -51,6 +50,9 @@ var CatanCounterChart;
         }
         totalTurn = 0;
         maxValue = 10;
+        if (!playerCount) {
+            playerCount = 4;
+        }
     }
     function bindEvents() {
         $('.btnlist.plus .dice-btn').click(function () {
@@ -97,8 +99,9 @@ var CatanCounterChart;
             $('td.rate_' + (i + 2)).text(rate.toFixed(1) + '%');
         }
         var chart = $('#graph').highcharts();
-        chart.series[0].setData(ys);
-        chart.yAxis[0].setExtremes(0, maxValue);
+        chart.series[0].setData(ys, false);
+        chart.yAxis[0].setExtremes(0, maxValue, false);
+        chart.redraw();
     }
 })(CatanCounterChart || (CatanCounterChart = {}));
 $(function () {

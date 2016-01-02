@@ -9,7 +9,6 @@ module CatanCounterChart {
     var maxValue;
 
     export function init() {
-        playerCount = 4;
         initValues();
         bindEvents();
         $('#graph').highcharts({
@@ -24,7 +23,7 @@ module CatanCounterChart {
             },
             yAxis: {
                 min: 0,
-                max: 10,
+                max: maxValue,
                 allowDecimals: false,
                 title: '',
             },
@@ -54,6 +53,9 @@ module CatanCounterChart {
         }
         totalTurn = 0;
         maxValue = 10;
+        if (!playerCount) {
+            playerCount = 4;
+        }
     }
 
     function bindEvents() {
@@ -108,11 +110,12 @@ module CatanCounterChart {
         }
 
         var chart = $('#graph').highcharts();
-        chart.series[0].setData(ys);
-        chart.yAxis[0].setExtremes(0, maxValue);
+        chart.series[0].setData(ys, false);
+        chart.yAxis[0].setExtremes(0, maxValue, false);
+        chart.redraw();
     }
 }
 
 $(function() {
     CatanCounterChart.init();
-})
+});
