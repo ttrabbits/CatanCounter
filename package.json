@@ -1,0 +1,25 @@
+{
+  "name": "catancounter",
+  "version": "1.0.0",
+  "description": "A tool to note and visualize the distribution of the dice spots.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-typescript": "^2.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttrabbits/CatanCounter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ttrabbits/CatanCounter/issues"
+  },
+  "homepage": "https://github.com/ttrabbits/CatanCounter#readme"
+}

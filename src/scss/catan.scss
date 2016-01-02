@@ -1,0 +1,68 @@
+#graph {
+    width: device-width;
+    height: 300px;
+    margin: 30px auto 10px;
+    max-width: 800px;
+}
+
+#turn-area {
+    text-align: center;
+    margin: 10px auto;
+
+    .turn {
+        font-weight: bold;
+        color: red;
+        font-size: 120%;
+    }
+}
+
+ul.btnlist {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+    li {
+        list-style-type: none;
+        line-height: 50px;
+        margin: 10px 0px;
+        display: inline;
+
+        a.btn {
+            padding: 0;
+        }
+
+        .dice-btn {
+            $height: 50px;
+            width: 50px;
+            height: $height;
+            line-height: $height;
+        }
+
+        .player-btn, .clear-btn {
+            $height: 40px;
+            width: 80px;
+            height: $height;
+            line-height: $height;
+        }
+    }
+}
+
+ul.minus a {
+    color: red;
+}
+
+#table-area {
+    width: device-width;
+    max-width: 400px;
+    margin: 20px auto 10px;
+
+    td, th {
+        text-align: center;
+        width: 33%;
+    }
+}
+
+#footer{
+    text-align: center;
+    margin: 0 auto 20px;
+}

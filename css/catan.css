@@ -1,68 +1,66 @@
 #graph {
-    width: device-width;
-    height: 300px;
-    margin: 30px auto 10px;
-    max-width: 800px;
+  width: device-width;
+  height: 300px;
+  margin: 30px auto 10px;
+  max-width: 800px;
 }
 
-#dice_area{
+#turn-area {
+  text-align: center;
+  margin: 10px auto;
 }
 
-#turn_area {
-    text-align: center;
-    margin: 10px auto;
+#turn-area .turn {
+  font-weight: bold;
+  color: red;
+  font-size: 120%;
 }
 
-.turn1, .turn2 {
-    font-weight: bold;
-    color: red;
-    font-size: 120%;
+ul.btnlist {
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
-ul.buttonlist {
-    padding: 0;
-    margin: 0;
-    text-align: center;
+ul.btnlist li {
+  list-style-type: none;
+  line-height: 50px;
+  margin: 10px 0px;
+  display: inline;
 }
 
-ul.buttonlist li {
-    list-style-type: none;
-    line-height: 50px;
-    margin: 0px 5px;
-    display: inline;
+ul.btnlist li a.btn {
+  padding: 0;
 }
 
-.dice_button {
-    width: 50px;
-    height: 40px;
-    line-height: 40px;
+ul.btnlist li .dice-btn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
 }
 
-.mode_button, .clear_button {
-    width: 80px;
-    height: 40px;
-    line-height: 40px;
+ul.btnlist li .player-btn, ul.btnlist li .clear-btn {
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
 }
 
-.minus input {
-    color: red;
+ul.minus a {
+  color: red;
 }
 
-#table_area {
-    width: device-width;
-    max-width: 400px;
-    margin: 20px auto 10px;
+#table-area {
+  width: device-width;
+  max-width: 400px;
+  margin: 20px auto 10px;
 }
 
-td, th {
-    text-align: center;
+#table-area td, #table-area th {
+  text-align: center;
+  width: 33%;
 }
 
-td.dice, td.rate {
-    width: 33%;
-}
-
-#footer{
-    text-align: center;
-    margin: 0 auto 20px;
+#footer {
+  text-align: center;
+  margin: 0 auto 20px;
 }
