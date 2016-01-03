@@ -8,8 +8,13 @@ module CatanCounterChart {
     var totalTurn;
     var maxValue;
 
+    var storage;
+
     export function init() {
-        initValues();
+        if (window.sessionStorage) {
+            storage = window.sessionStorage;
+        }
+        loadStorage() ? updateHtml() : initValues();
         bindEvents();
         $('#graph').highcharts({
             chart: {
@@ -29,7 +34,7 @@ module CatanCounterChart {
             },
             tooltip: {
                 formatter: function(){
-                    return "Spot " + this.x + ": <b>" + this.y + "</b>";
+                    return this.x + ': <b>' + this.y + ' times</b>';
                 },
             },
             credits: {
@@ -58,6 +63,38 @@ module CatanCounterChart {
         }
     }
 
+    function loadStorage() {
+        if (!storage || !storage.getItem('values')) {
+            return false;
+        }
+        try {
+            var values = JSON.parse(storage.getItem('values'));
+            xs = values.xs;
+            ys = values.ys;
+            totalTurn = values.totalTurn;
+            maxValue = values.maxValue;
+            playerCount = values.playerCount;
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
+    function saveStorage() {
+        if (!storage) {
+            return false;
+        }
+        var values = JSON.stringify({
+            xs: xs,
+            ys: ys,
+            totalTurn: totalTurn,
+            maxValue: maxValue,
+            playerCount: playerCount,
+        });
+        storage.setItem('values', values);
+        return true;
+    }
+
     function bindEvents() {
         $('.btnlist.plus .dice-btn').click(function() {
             var key = parseInt($(this).text()) - 2;
@@ -75,12 +112,9 @@ module CatanCounterChart {
         });
 
         $('.player-btn').click(function() {
-            var oldCount = playerCount;
             playerCount = parseInt($(this).attr('players'));
-            $(this).attr('players', oldCount);
-            $(this).text(oldCount + ' players')
-            $('.player-count').text(playerCount);
-            update();
+            updateHtml();
+            saveStorage();
         });
 
         $('.clear-btn').click(function() {
@@ -95,12 +129,23 @@ module CatanCounterChart {
         var max = Math.max.apply(null, ys);
         maxValue = (max > 10 ? max : 10);
 
+        updateHtml();
+
+        var chart = $('#graph').highcharts();
+        chart.series[0].setData(ys, false);
+        chart.yAxis[0].setExtremes(0, maxValue, false);
+        chart.redraw();
+
+        saveStorage();
+    }
+
+    function updateHtml() {
         // TODO: use template engine.
         var modulo = (totalTurn + 1) % playerCount;
         var mainTurn = Math.floor(totalTurn / playerCount + 1);
         var subTurn = modulo == 0 ? playerCount : modulo;
         $('.turn.main').text(mainTurn);
-        $(".turn.sub").text(subTurn);
+        $('.turn.sub').text(subTurn);
         $('th.total').text(totalTurn);
 
         for (var i = 0; i < 11; i++) {
@@ -109,11 +154,13 @@ module CatanCounterChart {
             $('td.rate_' + (i+2)).text(rate.toFixed(1) + '%');
         }
 
-        var chart = $('#graph').highcharts();
-        chart.series[0].setData(ys, false);
-        chart.yAxis[0].setExtremes(0, maxValue, false);
-        chart.redraw();
+        $('.player-count').text(playerCount);
+        var nextCount = playerCount == 4 ? 3 : 4;
+        var playerBtn = $('.player-btn');
+        playerBtn.attr('players', nextCount);
+        playerBtn.text(nextCount + ' players');
     }
+
 }
 
 $(function() {
